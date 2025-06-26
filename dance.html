@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LA Ember Dance</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins';
+      background: linear-gradient(to right, #d1f2eb, #e8f8f5);
+      color: #222;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 950px;
+      margin: auto;
+      background-color: rgba(255, 255, 255, 0.7);
+      border-radius: 20px;
+      padding: 35px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+    .logo {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .logo img {
+      max-width: 250px;
+      border-radius: 20px;
+      box-shadow: 0 0 25px #00b894, 0 0 45px #55efc4;
+      filter: drop-shadow(0 0 20px #00cec9);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .logo img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 35px #00cec9, 0 0 60px #81ecec;
+    }
+    h1, h2 {
+      text-align: center;
+      color: #09817a;
+      margin-bottom: 20px;
+    }
+    .quote {
+      text-align: center;
+      font-style: italic;
+      font-size: 1.2em;
+      color: #555;
+      margin-bottom: 30px;
+    }
+    p {
+      font-size: 1.1em;
+      line-height: 1.8;
+      margin-bottom: 30px;
+    }
+    .email-box {
+      background-color: #d0f0ec;
+      padding: 20px;
+      border-left: 4px solid #00cec9;
+      border-radius: 10px;
+      font-style: italic;
+      box-shadow: 0 0 10px #c3f4f1;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    .review-section {
+      margin-top: 40px;
+    }
+    textarea, input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #00b894;
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .review-display {
+      margin-top: 30px;
+      background-color: #eafff7;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #b2fef7;
+    }
+    .single-review {
+      background-color: #d5fff9;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-left: 5px solid #00cec9;
+      border-radius: 12px;
+      box-shadow: 0 0 8px #b9f6ec;
+      transition: all 0.3s ease;
+    }
+    .single-review:hover {
+      transform: scale(1.02);
+    }
+    .review-meta {
+      font-size: 0.9em;
+      color: #555;
+      margin-bottom: 5px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="logo">
+    <img src="https://github.com/aditi-laember/Laember/raw/main/Logo-dance.png" alt="LA Ember Dance Logo">
+  </div> <br> 
+
+  <div class="quote">"DANCE IS THE HEARTBEAT OF FREEDOM"</div> 
+
+ <h2>Why Choose LA Ember for Dance?</h2>
+  <ul>
+    <li>🩰 We celebrate every style — from classical to street to K-pop!</li>
+    <li>📣 Exposure to performance showcases on our platform</li>
+    <li>🎬 We help Starlets build portfolios with stage-ready vibes</li>
+    <li>✨ We promote every dancer who puts their soul into movement</li>
+  </ul>
+
+  <h2>📚 How We Mentor</h2>
+  <p>We support dreamers with handpicked dance tutorials, mentorship content, and choreography breakdowns. Our mission? Help you improve without pressure, and vibe while you rise!</p>
+  <div class="email-box">
+    💌 Want your dance covers or freestyles featured? Email us at: <strong>laember14@gmail.com</strong>
+  </div>
+
+  <h2>🌟 What Makes LA Ember Different?</h2>
+  <ul>
+    <li>🔥 We believe in raw, passionate talent — not just followers</li>
+    <li>💌 Personalized replies and reviews</li>
+    <li>🎥 Free content curation from our team</li>
+    <li>💚 Safe space for every dancer to shine</li>
+  </ul>
+
+  <div class="review-section">
+    <h2>📝 Share Your Dance Experience</h2>
+    <p>Tell us how you feel dancing with LA Ember. We wanna hear it all ✨</p>
+    <form id="reviewForm">
+      <input type="text" id="starletName" placeholder="Your Name ✨" required><br><br>
+      <textarea id="reviewText" placeholder="Write your review here..." required></textarea><br>
+      <button type="submit">Submit Review</button>
+    </form>
+
+    <div class="review-display" id="reviewDisplay">
+      <h3>🌈 Dance Starlets Speak:</h3>
+      <div id="reviewsList"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById('reviewForm');
+  const reviewText = document.getElementById('reviewText');
+  const starletName = document.getElementById('starletName');
+  const reviewsList = document.getElementById('reviewsList');
+
+  window.onload = () => {
+    const saved = localStorage.getItem('laember_dance_reviews');
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        parsed
+          .filter(review => review && typeof review === 'object' && review.name && review.comment)
+          .forEach(review => addReviewToDOM(review));
+      } catch (e) {
+        console.error("Invalid review data", e);
+        localStorage.removeItem('laember_dance_reviews');
+      }
+    }
+  };
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const name = starletName.value.trim();
+    const comment = reviewText.value.trim();
+    const date = new Date().toLocaleString();
+
+    if (name === '' || comment === '') return;
+
+    const reviewObj = { name, comment, date };
+
+    addReviewToDOM(reviewObj);
+
+    let saved = localStorage.getItem('laember_dance_reviews');
+    let reviews = saved ? JSON.parse(saved) : [];
+    reviews.push(reviewObj);
+    localStorage.setItem('laember_dance_reviews', JSON.stringify(reviews));
+
+    reviewText.value = '';
+    starletName.value = '';
+  });
+
+  function addReviewToDOM({ name, comment, date }) {
+    const div = document.createElement('div');
+    div.className = 'single-review';
+
+    div.innerHTML = `
+      <div class="review-meta">🩷 ${name} — <span>${date}</span></div>
+      <div class="review-comment">💬 ${comment}</div>
+    `;
+
+    reviewsList.prepend(div);
+  }
+</script>
+
+</body>
+</html>
