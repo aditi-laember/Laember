@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LA Ember Writing</title>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Raleway', sans-serif;
+      background: linear-gradient(to right, #f8f0ff, #f3e9fa);
+      color: #3c246c;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 950px;
+      margin: auto;
+      background-color: rgba(255, 255, 255, 0.85);
+      border-radius: 20px;
+      padding: 35px;
+      box-shadow: 0 0 20px rgba(188, 153, 255, 0.4);
+    }
+    .logo {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .logo img {
+      max-width: 250px;
+      border-radius: 20px;
+      box-shadow: 0 0 25px #d4a9ff, 0 0 45px #f0d6ff;
+      filter: drop-shadow(0 0 20px #cfaeff);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .logo img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 35px #cfb4ff, 0 0 60px #efd4ff;
+    }
+    h1, h2 {
+      text-align: center;
+      color: #8e44ad;
+    }
+    .quote {
+      text-align: center;
+      font-style: italic;
+      font-size: 1.3em;
+      color: #5e3370;
+      margin-bottom: 30px;
+      text-shadow: 1px 1px 3px #d9b3ff;
+    }
+    p, ul {
+      font-size: 1.1em;
+      line-height: 1.8;
+      margin-bottom: 30px;
+    }
+    .email-box {
+      background-color: #f3ddff;
+      padding: 20px;
+      border-left: 4px solid #a66bbe;
+      border-radius: 10px;
+      font-style: italic;
+      box-shadow: 0 0 10px #e5ccfa;
+    }
+    .review-section {
+      margin-top: 40px;
+    }
+    textarea, input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #a66bbe;
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .review-display {
+      margin-top: 30px;
+      background-color: #fbefff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #eacfff;
+    }
+    .single-review {
+      background-color: #f2e5ff;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-left: 5px solid #9b59b6;
+      border-radius: 12px;
+      box-shadow: 0 0 8px #d9b3ff;
+    }
+    .review-meta {
+      font-size: 0.9em;
+      color: #555;
+      margin-bottom: 5px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="logo">
+    <img src="https://github.com/aditi-laember/Laember/raw/main/Logo-writing.png" alt="LA Ember Writing Logo">
+  </div>
+
+  <div class="quote">"EVERY WORD IS A WHISPER FROM A DREAMER."</div>
+
+  <h1>🖋️ LA Ember Writing</h1>
+
+  <h2>Why Choose LA Ember for Writing?</h2>
+  <ul>
+    <li>📖 We accept poetry, stories, fanfics, spoken word — all genres</li>
+    <li>🗞️ We give you a platform to publish and be heard</li>
+    <li>💬 Personalized tips and guidance on your work</li>
+    <li>🌟 Exposure and a chance to be discovered as a young author</li>
+  </ul>
+
+  <h2>📚 How We Mentor Writers</h2>
+  <p>We teach you storytelling techniques, world-building, character arcs, and emotional depth through bite-sized tips, examples, and online videos. You’ll also learn grammar tricks and poetic devices that elevate your writing from basic to breathtaking.</p>
+
+  <div class="email-box">
+    ✨ Want your writing featured on LA Ember? Submit it via email: <strong> laember14@gmail.com </strong>
+  </div>
+
+  <h2>💜 Why LA Ember is Every Writer’s Dream</h2>
+  <ul>
+    <li>📝 We care about your words, your story, your heart</li>
+    <li>🔍 All submissions are read and reviewed</li>
+    <li>🎤 We give a voice to the silent poets & storytellers</li>
+    <li>📚 We’re not just a platform — we’re your writing fam</li>
+  </ul>
+
+  <div class="review-section">
+    <h2>📝 Share Your Writing Journey</h2>
+    <form id="reviewForm">
+      <input type="text" id="starletName" placeholder="Your Name ✨" required><br><br>
+      <textarea id="reviewText" placeholder="Write your experience..." required></textarea><br>
+      <button type="submit">Submit Review</button>
+    </form>
+
+    <div class="review-display" id="reviewDisplay">
+      <h3>💌 Writer Starlets Speak:</h3>
+      <div id="reviewsList"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById('reviewForm');
+  const reviewText = document.getElementById('reviewText');
+  const starletName = document.getElementById('starletName');
+  const reviewsList = document.getElementById('reviewsList');
+
+  window.onload = () => {
+    const saved = localStorage.getItem('laember_writing_reviews');
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        parsed
+          .filter(r => r && typeof r === 'object' && r.name && r.comment)
+          .forEach(r => addReviewToDOM(r));
+      } catch (e) {
+        console.error("Invalid review data", e);
+        localStorage.removeItem('laember_writing_reviews');
+      }
+    }
+  };
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const name = starletName.value.trim();
+    const comment = reviewText.value.trim();
+    const date = new Date().toLocaleString();
+
+    if (name === '' || comment === '') return;
+
+    const reviewObj = { name, comment, date };
+
+    addReviewToDOM(reviewObj);
+
+    let saved = localStorage.getItem('laember_writing_reviews');
+    let reviews = saved ? JSON.parse(saved) : [];
+    reviews.push(reviewObj);
+    localStorage.setItem('laember_writing_reviews', JSON.stringify(reviews));
+
+    reviewText.value = '';
+    starletName.value = '';
+  });
+
+  function addReviewToDOM({ name, comment, date }) {
+    const div = document.createElement('div');
+    div.className = 'single-review';
+    div.innerHTML = `
+      <div class="review-meta">✍️ ${name} — <span>${date}</span></div>
+      <div class="review-comment">📝 ${comment}</div>
+    `;
+    reviewsList.prepend(div);
+  }
+</script>
+
+</body>
+</html>
