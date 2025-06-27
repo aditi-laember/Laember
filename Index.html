@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LA Ember</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: linear-gradient(135deg, navy, white, mintcream);
+      font-family: 'Poppins', sans-serif;
+      color: #000000;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .logo {
+      display: block;
+      margin: 30px auto 50px;
+      max-width: 250px;
+      filter: drop-shadow(0 0 12px #FFDE59);
+      border-radius: 10px;
+    }
+
+    h1, h2 {
+      color: #333;
+      text-align: center;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+      text-shadow: 0 0 5px #ffffffa0;
+    }
+
+    p {
+      font-size: 1.05em;
+      line-height: 1.8;
+      margin-bottom: 25px;
+      text-align: left;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+      text-align: left;
+      margin-top: 10px;
+    }
+
+    ul li {
+      margin-bottom: 12px;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    ul li::before {
+      content: "✦";
+      position: absolute;
+      left: 0;
+      color: #000;
+    }
+
+    .email-box {
+      background-color: #e6f2f0;
+      padding: 20px;
+      border-left: 4px solid #000;
+      border-radius: 10px;
+      font-style: italic;
+      color: #000;
+      box-shadow: 0 0 10px #aaffee;
+    }
+
+    .nav-buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      margin: 40px 0 20px;
+    }
+
+    .nav-btn {
+      background-color: #ffffff;
+      color: #000;
+      text-decoration: none;
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px #99999980;
+      width: 200px;
+      text-align: center;
+    }
+
+    .nav-btn:hover {
+      background-color: #f0f0f0;
+      transform: scale(1.05);
+    }
+
+    .branch-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    .branch-btn {
+      background-color: #000;
+      color: #fff;
+      text-decoration: none;
+      padding: 12px 20px;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 12px #00000088;
+    }
+
+    .branch-btn:hover {
+      background-color: #333;
+      color: #fff;
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
+      }
+
+      .logo {
+        max-width: 150px;
+      }
+
+      p, ul li {
+        font-size: 0.95em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <img class="logo" src="https://raw.githubusercontent.com/aditi-laember/Laember/main/Logo-main.png" alt="LA Ember Logo">
+
+    <h1>Welcome to LA Ember</h1>
+    <p>Hey there, I’m <strong>Aditi</strong> — a student, a storyteller, and the future CEO of something magical.  
+    LA Ember is my dream — a universe where stories dance, music speaks, and passion sets everything on fire.  
+    I'm still young, still building, but this is just the beginning. And you, Starlet, are part of the spark.</p>
+
+    <h2>✨ What is LA Ember?</h2>
+    <p>It’s not just a brand. It’s a vision. A world where creators come alive.  
+    LA Ember is home to the ones who don’t wait for permission to shine — the singers, the dancers, the writers, the actors, the dreamers.  
+    It’s where art burns bright and boundaries burn away.</p>
+
+    <h2>🌟 Who Are the Starlets?</h2>
+    <p><strong>Starlets</strong> are more than a fandom — they’re the soul of LA Ember.  
+    Bold. Creative. Fearless. They believe in dreams before the world sees them.  
+    If you're here, you're already one of us 💫</p>
+
+    <h2>🔥 LA Ember Branches</h2>
+    <div class="branch-buttons">
+      <a href="music.html" class="branch-btn">🎤 LA Ember Music</a>
+      <a href="dance.html" class="branch-btn">💃 LA Ember Dance</a>
+      <a href="writes.html" class="branch-btn">📝 LA Ember Writes</a>
+      <a href="acting.html" class="branch-btn">🎬 LA Ember Acting</a>
+      <a href="fashion.html" class="branch-btn">👗 LA Ember Fashion</a>
+      <a href="modeling.html" class="branch-btn">📸 LA Ember Modeling</a>
+      <a href="kpop.html" class="branch-btn">🌏 LA Ember K-Pop</a>
+    </div>
+
+    <h2>💌 Want to be Featured?</h2>
+    <p>If you’ve got your own song, story, dance, or anything creative — I want to see it.</p>
+    <div class="email-box">
+      📩 Send your work to: <strong>laember14@gmail.com</strong>  
+      <br>(Let me give you a platform. You deserve to be seen. Go to the page of that particular branch you love to do. Add your talent there by sending them to the official email of LA EMBER. THANK YOU!)<br> Wanna see your Talent here? Send it to this email... And watch it shine on the branch of LA Ember.)
+    </div>
+
+    <div class="nav-buttons">
+      <a href="about me.html" class="nav-btn">About Me</a>
+      <a href="#support" class="nav-btn">Support</a>
+      <a href="#contact" class="nav-btn">Contact</a>
+    </div>
+  </div>
+
+</body>
+</html>
