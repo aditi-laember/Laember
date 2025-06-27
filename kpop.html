@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LA Ember K-pop</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #c0f0ff, #000000, #ffc1e3, #c8a2ff);
+      color: #fdfdfd;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 950px;
+      margin: auto;
+      background-color: rgba(0, 0, 0, 0.85);
+      border-radius: 20px;
+      padding: 35px;
+      box-shadow: 0 0 20px rgba(200, 162, 255, 0.5);
+    }
+    .logo {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .logo img {
+      max-width: 250px;
+      border-radius: 20px;
+      box-shadow: 0 0 25px #ffc1e3, 0 0 45px #c8a2ff;
+      filter: drop-shadow(0 0 20px #c8a2ff);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .logo img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 35px #ffc1e3, 0 0 60px #c8a2ff;
+    }
+    h1, h2 {
+      text-align: center;
+      color: #c0f0ff;
+    }
+    .quote {
+      text-align: center;
+      font-style: italic;
+      font-size: 1.3em;
+      color: #ffc1e3;
+      margin-bottom: 30px;
+      text-shadow: 1px 1px 3px #c8a2ff;
+    }
+    p, ul {
+      font-size: 1.1em;
+      line-height: 1.8;
+      margin-bottom: 30px;
+    }
+    .email-box {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-left: 4px solid #ffc1e3;
+      border-radius: 10px;
+      font-style: italic;
+      box-shadow: 0 0 10px #ffc1e3;
+    }
+    .review-section {
+      margin-top: 40px;
+    }
+    textarea, input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+      font-size: 1em;
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #c8a2ff;
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .review-display {
+      margin-top: 30px;
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #c8a2ff;
+    }
+    .single-review {
+      background-color: rgba(255, 255, 255, 0.07);
+      padding: 15px;
+      margin-bottom: 15px;
+      border-left: 5px solid #ffc1e3;
+      border-radius: 12px;
+      box-shadow: 0 0 8px #c8a2ff;
+    }
+    .review-meta {
+      font-size: 0.9em;
+      color: #ccc;
+      margin-bottom: 5px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="logo">
+    <img src="https://github.com/aditi-laember/Laember/raw/main/Logo-kpop.png" alt="LA Ember Kpop Logo">
+  </div>
+
+  <div class="quote">"They called us dreamers — now they call us idols."</div>
+
+  <h1>🎤 LA Ember K-pop</h1>
+
+  <h2>Why Choose LA Ember for K-pop?</h2>
+  <ul>
+    <li>🎶 Dance and vocal training inspo, K-style</li>
+    <li>📺 Idol choreography tutorials & breakdowns</li>
+    <li>🎧 Covers, collabs, and full-on stage presence coaching</li>
+    <li>🌍 A fan-first platform where dreamers debut their spark</li>
+  </ul>
+
+  <h2>🎓 How We Mentor K-pop Stars</h2>
+  <p>Whether you're vibing with BTS or stanning NewJeans, we offer dance challenges, vocal warmups, fashion inspo, and community practice sessions — all curated for your idol journey.</p>
+
+  <div class="email-box">
+    💌 Wanna show the world your talent? Email your K-pop covers or performances to <strong>laember14@gmail.com</strong> and get featured on LA Ember!
+  </div>
+
+  <h2>💥 Why LA Ember Stands Out</h2>
+  <ul>
+    <li>🌟 Safe space for every fan-turned-idol</li>
+    <li>🎉 From fangirls to headliners — no gatekeeping</li>
+    <li>📸 We don’t wait for auditions — we create them</li>
+    <li>💜 Embrace every vibe — from soft to savage</li>
+  </ul>
+
+  <div class="review-section">
+    <h2>📝 Share Your K-pop Experience</h2>
+    <form id="reviewForm">
+      <input type="text" id="starletName" placeholder="Your Name ✨" required><br><br>
+      <textarea id="reviewText" placeholder="Write your review here..." required></textarea><br>
+      <button type="submit">Submit Review</button>
+    </form>
+
+    <div class="review-display" id="reviewDisplay">
+      <h3>💬 Starlets on Stage:</h3>
+      <div id="reviewsList"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById('reviewForm');
+  const reviewText = document.getElementById('reviewText');
+  const starletName = document.getElementById('starletName');
+  const reviewsList = document.getElementById('reviewsList');
+
+  window.onload = () => {
+    const saved = localStorage.getItem('laember_kpop_reviews');
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        parsed.filter(r => r && typeof r === 'object' && r.name && r.comment).forEach(r => addReviewToDOM(r));
+      } catch (e) {
+        console.error("Invalid review data", e);
+        localStorage.removeItem('laember_kpop_reviews');
+      }
+    }
+  };
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const name = starletName.value.trim();
+    const comment = reviewText.value.trim();
+    const date = new Date().toLocaleString();
+
+    if (name === '' || comment === '') return;
+
+    const reviewObj = { name, comment, date };
+
+    addReviewToDOM(reviewObj);
+
+    let saved = localStorage.getItem('laember_kpop_reviews');
+    let reviews = saved ? JSON.parse(saved) : [];
+    reviews.push(reviewObj);
+    localStorage.setItem('laember_kpop_reviews', JSON.stringify(reviews));
+
+    reviewText.value = '';
+    starletName.value = '';
+  });
+
+  function addReviewToDOM({ name, comment, date }) {
+    const div = document.createElement('div');
+    div.className = 'single-review';
+    div.innerHTML = `
+      <div class="review-meta">🎶 ${name} — <span>${date}</span></div>
+      <div class="review-comment">💬 ${comment}</div>
+    `;
+    reviewsList.prepend(div);
+  }
+</script>
+
+</body>
+</html>
