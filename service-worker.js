@@ -1,4 +1,5 @@
 self.addEventListener("install", (event) => {
+  self.skipWaiting();
   event.waitUntil(
     caches.open("la-ember-cache").then((cache) => {
       return cache.addAll([
@@ -10,11 +11,10 @@ self.addEventListener("install", (event) => {
         "fashion.html",
         "modeling.html",
         "kpop.html",
-        "about.html",
-        "contact.html",
+        "about me.html",
         "support.html",
-        "Logo-main.png",
-        // add more files if needed
+        "contact.html",
+        "Official logo.png"
       ]);
     })
   );
@@ -23,7 +23,9 @@ self.addEventListener("install", (event) => {
 self.addEventListener("fetch", (event) => {
   event.respondWith(
     caches.match(event.request).then((response) => {
-      return response || fetch(event.request);
+      return response || fetch(event.request).catch(() =>
+        caches.match("index.html")
+      );
     })
   );
 });
