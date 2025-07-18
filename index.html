@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="manifest" href="manifest.json" />
+<meta name="theme-color" content="#88c3ff" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LA Ember</title>
@@ -191,6 +193,13 @@
       <a href="#contact" class="nav-btn">Contact</a>
     </div>
   </div>
+  <script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("service-worker.js")
+      .then((reg) => console.log("Service Worker registered ✅", reg))
+      .catch((err) => console.error("Service Worker registration failed ❌", err));
+  }
+</script>
 
 </body>
 </html>
