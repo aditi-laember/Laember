@@ -1,0 +1,21 @@
+{
+  "name": "LA Ember",
+  "short_name": "LA Ember",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#88c3ff",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "https://raw.githubusercontent.com/aditi-laember/Laember/main/Logo-main.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://raw.githubusercontent.com/aditi-laember/Laember/main/Logo-main.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
