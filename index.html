@@ -3,26 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LA Ember</title>
+  <title>LA Ember — By Aditi</title>
+
+  <!-- SEO MAGIC -->
+  <meta name="description" content="LA Ember — a galaxy of young creators by Aditi. Dance, music, acting, writing, fashion & more. Join the Starlets.">
+  <meta name="keywords" content="LA Ember, Aditi, creative platform, Indian creator, music, dance, fashion, acting, modeling, youth talent, Starlets">
+  <meta name="author" content="Aditi">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://aditi-laember.github.io/Laember/" />
+
+  <!-- PWA & Icon -->
   <link rel="manifest" href="/Laember/manifest.json" />
-  <meta name="theme-color" content="#008080" />
+  <meta name="theme-color" content="#002244" />
   <meta name="apple-mobile-web-app-title" content="LA Ember" />
   <link rel="apple-touch-icon" sizes="180x180" href="https://raw.githubusercontent.com/aditi-laember/Laember/main/Official%20logo.png" />
-  <link rel="icon" href="https://raw.githubusercontent.com/aditi-laember/Laember/main/Official%20logo.png" />
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/aditi-laember/Laember/main/Official%20logo.png" />
   <link rel="shortcut icon" href="https://raw.githubusercontent.com/aditi-laember/Laember/main/Official%20logo.png" />
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Cinzel:wght@600&display=swap" rel="stylesheet">
 
   <style>
-    :root {
-      --la-teal: #008080;
-      --la-mint: #b2dfdb;
-      --la-gold: #ffd700;
-      --la-white: #ffffff;
-      --la-black: #000000;
-    }
-
     * {
       box-sizing: border-box;
       margin: 0;
@@ -30,36 +31,38 @@
     }
 
     body {
-      background-color: var(--la-white);
+      background: linear-gradient(135deg, #000010, #1a1a2e);
       font-family: 'Poppins', sans-serif;
-      color: var(--la-black);
+      color: #ffffff;
       padding: 40px 20px;
+      background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
     }
 
     .container {
       max-width: 900px;
       margin: auto;
-      background-color: #ffffff;
+      background-color: rgba(255, 255, 255, 0.08);
       border-radius: 20px;
       padding: 30px;
-      box-shadow: 0 0 20px #ddd;
+      box-shadow: 0 0 40px rgba(0, 255, 255, 0.2);
+      backdrop-filter: blur(8px);
     }
 
     .logo {
       display: block;
-      margin: 20px auto 40px;
+      margin: 30px auto 40px;
       max-width: 220px;
-      filter: drop-shadow(0 0 12px var(--la-gold));
-      border-radius: 12px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px #88f7ff;
     }
 
     h1, h2 {
-      font-family: 'Playfair Display', serif;
-      color: var(--la-teal);
+      font-family: 'Cinzel', serif;
       text-align: center;
       margin-bottom: 20px;
-      letter-spacing: 1px;
-      text-shadow: 0 0 4px var(--la-mint);
+      letter-spacing: 1.5px;
+      color: #00ffff;
+      text-shadow: 0 0 10px #ffd70080;
     }
 
     p {
@@ -67,35 +70,36 @@
       line-height: 1.8;
       margin-bottom: 25px;
       text-align: left;
+      color: #e0ffff;
     }
 
     ul {
       list-style: none;
       padding-left: 0;
-      margin-top: 10px;
+      text-align: left;
     }
 
     ul li {
       margin-bottom: 12px;
       padding-left: 20px;
       position: relative;
+      color: #fff;
     }
 
     ul li::before {
-      content: "✦";
+      content: "★";
       position: absolute;
       left: 0;
-      color: var(--la-teal);
+      color: #ffd700;
     }
 
     .email-box {
-      background-color: var(--la-mint);
+      background-color: rgba(255, 255, 255, 0.1);
       padding: 20px;
-      border-left: 4px solid var(--la-teal);
-      border-radius: 10px;
+      border-left: 5px solid #00ffff;
+      border-radius: 12px;
       font-style: italic;
-      color: var(--la-black);
-      box-shadow: 0 0 10px var(--la-gold);
+      box-shadow: 0 0 12px #00ffee80;
     }
 
     .nav-buttons {
@@ -107,22 +111,20 @@
     }
 
     .nav-btn {
-      background-color: var(--la-white);
-      color: var(--la-teal);
+      background-color: #ffffff10;
+      color: #00ffff;
       text-decoration: none;
       padding: 12px 24px;
       border-radius: 50px;
       font-weight: 600;
-      border: 2px solid var(--la-teal);
       transition: all 0.3s ease;
-      box-shadow: 0 0 10px var(--la-mint);
+      box-shadow: 0 0 10px #00ffff55;
       width: 200px;
       text-align: center;
     }
 
     .nav-btn:hover {
-      background-color: var(--la-mint);
-      color: var(--la-black);
+      background-color: #ffffff22;
       transform: scale(1.05);
     }
 
@@ -135,19 +137,18 @@
     }
 
     .branch-btn {
-      background-color: var(--la-teal);
-      color: var(--la-white);
+      background-color: #000000;
+      color: #fff;
       text-decoration: none;
       padding: 12px 20px;
       border-radius: 50px;
       font-weight: 600;
       transition: all 0.3s ease;
-      box-shadow: 0 0 12px var(--la-gold);
+      box-shadow: 0 0 15px #ffd70080;
     }
 
     .branch-btn:hover {
-      background-color: var(--la-mint);
-      color: var(--la-black);
+      background-color: #222222;
       transform: scale(1.05);
     }
 
@@ -166,8 +167,8 @@
     }
   </style>
 </head>
-
 <body>
+
   <div class="container">
     <img class="logo" src="https://raw.githubusercontent.com/aditi-laember/Laember/main/Official%20logo.png" alt="LA Ember Logo">
 
@@ -188,21 +189,21 @@
 
     <h2>🔥 LA Ember Branches</h2>
     <div class="branch-buttons">
-      <a href="music.html" class="branch-btn">🎤 LA Ember Music</a>
-      <a href="dance.html" class="branch-btn">💃 LA Ember Dance</a>
-      <a href="writes.html" class="branch-btn">📝 LA Ember Writes</a>
-      <a href="acting.html" class="branch-btn">🎬 LA Ember Acting</a>
-      <a href="fashion.html" class="branch-btn">👗 LA Ember Fashion</a>
-      <a href="modeling.html" class="branch-btn">📸 LA Ember Modeling</a>
-      <a href="kpop.html" class="branch-btn">🌏 LA Ember K-Pop</a>
+      <a href="music.html" class="branch-btn">🎤 Music</a>
+      <a href="dance.html" class="branch-btn">💃 Dance</a>
+      <a href="writes.html" class="branch-btn">📝 Writes</a>
+      <a href="acting.html" class="branch-btn">🎬 Acting</a>
+      <a href="fashion.html" class="branch-btn">👗 Fashion</a>
+      <a href="modeling.html" class="branch-btn">📸 Modeling</a>
+      <a href="kpop.html" class="branch-btn">🌏 K-Pop</a>
     </div>
 
     <h2>💌 Want to be Featured?</h2>
     <p>If you’ve got your own song, story, dance, or anything creative — I want to see it.</p>
     <div class="email-box">
-      📩 Send your work to: <strong>laember14@gmail.com</strong><br>
-      (Go to your favorite branch, follow the rules, and email your work.  
-      I’ll help you shine like the star you are ⭐)
+      📩 Send your work to: <strong>laember14@gmail.com</strong>  
+      <br>Go to the branch page that matches your passion and submit via email.  
+      You might just shine next on LA Ember ⭐
     </div>
 
     <div class="nav-buttons">
@@ -219,5 +220,6 @@
         .catch((err) => console.error("❌ Service Worker registration failed:", err));
     }
   </script>
+
 </body>
 </html>
